@@ -15,12 +15,13 @@ public class practicaListas {
         ArrayList<String> list = new ArrayList<String>();
         list = separarPalabras(new String[]{args[0]});
         //System.out.println(list);
-        int cant = 0;
-        Scanner s = new Scanner(System.in);
+        //Scanner s = new Scanner(System.in);
         //System.out.println("Ingrese la palabra que desea buscar: ");
+        int cant = 0;
         String palabra = args[1];//s.nextLine();
         cant = cantidadPalabra(list, palabra);
         System.out.println("La palabra: " + args[1] + " aparece un total de: " + cant + " veces.");
+        System.out.println(list);
     }
 
     public static ArrayList<String> separarPalabras(String[] args){
