@@ -2,7 +2,9 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Scanner;
 public class practicaListas {
 
     public static void main(String[] args) {
@@ -12,7 +14,12 @@ public class practicaListas {
         }
         ArrayList<String> list = new ArrayList<String>();
         list = separarPalabras(new String[]{args[0]});
-        System.out.println(list);
+        //System.out.println(list);
+        int cant = 0;
+        Scanner s = new Scanner(System.in);
+        //System.out.println("Ingrese la palabra que desea buscar: ");
+        String palabra = args[1];//s.nextLine();
+        cantidadPalabra(list, palabra);
     }
 
     public static ArrayList<String> separarPalabras(String[] args){
@@ -101,7 +108,7 @@ public class practicaListas {
         return list;
     }
 
-    public static int cantidadPalabra(ArrayList<String> list){
+    public static int cantidadPalabra(ArrayList<String> list, String palabra){
         int cantidad = 0;
 
 
