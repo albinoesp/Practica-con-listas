@@ -19,7 +19,8 @@ public class practicaListas {
         Scanner s = new Scanner(System.in);
         //System.out.println("Ingrese la palabra que desea buscar: ");
         String palabra = args[1];//s.nextLine();
-        cantidadPalabra(list, palabra);
+        cant = cantidadPalabra(list, palabra);
+        System.out.println("La palabra: " + args[1] + " aparece un total de: " + cant + " veces.");
     }
 
     public static ArrayList<String> separarPalabras(String[] args){
@@ -111,7 +112,11 @@ public class practicaListas {
     public static int cantidadPalabra(ArrayList<String> list, String palabra){
         int cantidad = 0;
 
-
+        for (String a : list){
+            if(a == palabra){
+                cantidad++;
+            }
+        }
 
         return cantidad;
     }
