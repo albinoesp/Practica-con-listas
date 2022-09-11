@@ -2,9 +2,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
+import java.util.Map.Entry;
 public class practicaListas {
 
     public static void main(String[] args) {
@@ -13,18 +12,21 @@ public class practicaListas {
             System.exit(0);
         }
         ArrayList<String> list = new ArrayList<String>();
-        list = separarPalabras(new String[]{args[0]});
+        list = separarPalabras(new String[]{args[0]}, list);
+
         //System.out.println(list);
         //Scanner s = new Scanner(System.in);
         //System.out.println("Ingrese la palabra que desea buscar: ");
-        int cant = 0;
+        //int cant = 0;
         String palabra = args[1];//s.nextLine();
-        cant = cantidadPalabra(list, palabra);
-        System.out.println("La palabra: " + args[1] + " aparece un total de: " + cant + " veces.");
-        System.out.println(list);
+        cantidadPalabra(list, palabra);
+        //cant = cantidadPalabra(list, palabra);
+        //System.out.println("La palabra: " + args[1] + " aparece un total de: " + cant + " veces.");
+        //System.out.println(list);
+
     }
 
-    public static ArrayList<String> separarPalabras(String[] args){
+    public static ArrayList<String> separarPalabras(String[] args, ArrayList<String> list){
         FileReader fi = null;
         try {
             fi = new FileReader(args[0]);
@@ -47,7 +49,7 @@ public class practicaListas {
 
 
         // Lista con todas las palabras diferentes
-        ArrayList<String> list = new ArrayList<String>();
+        //ArrayList<String> list = new ArrayList<String>();
 
         // Tiempo inicial
         long startTime = System.currentTimeMillis();
@@ -84,9 +86,10 @@ public class practicaListas {
                     }
 
                     // si la palabra no esta en la lista, agregar a la lista
-                    if ( !list.contains(theWord) ) {
-                        list.add(theWord);
-                    }
+                    //if ( !list.contains(theWord) ) {
+                      //  list.add(theWord);
+                    //}
+                    list.add(theWord);
                 }
             }
             // Obtener tiempo de ejecución
@@ -110,15 +113,19 @@ public class practicaListas {
         return list;
     }
 
-    public static int cantidadPalabra(ArrayList<String> list, String palabra){
-        int cantidad = 0;
+    public static void cantidadPalabra(ArrayList<String> list, String palabra){
 
-        for (String a : list){
+        HashSet<String> map = new HashSet<String>(list);
+        /*for (String a : list){
+            System.out.println("a: " + a);
+            System.out.println(palabra);
             if(a == palabra){
+                System.out.println("cantidad" + cantidad);
                 cantidad++;
             }
-        }
-
-        return cantidad;
+        }*/
+        //list.contains(palabra);
+        //System.out.println("palabra " + palabra);
+        System.out.println("La palabra " + palabra + " aparece un total de " + Collections.frequency(list, palabra));
     }
 }
